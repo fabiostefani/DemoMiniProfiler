@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  pg:
+    image: postgres:13.4
+    container_name: "postgres_miniprofiler"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Postgres2022!
+      - TZ=GMT
+    volumes:
+      - "./data/postgres:/var/lib/postgresql/data"
+    ports:
+      - 5433:5432
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
